@@ -1,3 +1,54 @@
-/* 
-    General Styles
-*/
+.card{
+    width: 300px;
+    flex: 0 0 auto;
+   
+}
+.container-cards{
+    overflow-x: scroll;
+    display: flex;
+}
+.description, .singleTitle{
+    text-align: center;
+    margin: 30px;
+}
+.title, .text{
+    color: rgb(170, 36, 36);
+}
+
+.line{
+   
+    border-color: rgb(170, 36, 36);;
+}
+.singleImg{
+    width: 600px;
+    height: 500px;
+    margin-right: 20px;
+}
+
+.SingOff{
+    margin-left: 10px;
+}
+.principal-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    align-items: center;
+    margin-top: 100px
+}
+
+.myform {
+    width: 450px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 0px 14px 80px rgba(34, 55, 58, 0.2);
+    padding: 40px 55px 45px 55px;
+    border-radius: 15px;
+}
+
+.home{
+    margin-top: 100px;
+}
+.log{
+    margin-left: 1200px;
+}
