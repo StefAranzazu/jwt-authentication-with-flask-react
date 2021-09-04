@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light">
+		<nav className="navbar navbar-expand navbar-light bg-light">
 			<Link to="/" className="navbar-brand">
 				<img
 					src="https://logos-marcas.com/wp-content/uploads/2020/11/Star-Wars-Logo.png"
@@ -13,7 +13,7 @@ export const Navbar = () => {
 					height="60"
 				/>
 			</Link>
-			{!store.isAuthenticate ? (
+			{store.isAuthenticate ? (
 				<div>
 					<ul className="log navbar-nav">
 						<li className="nav-item active ">
@@ -30,7 +30,7 @@ export const Navbar = () => {
 				</div>
 			) : (
 				<>
-					<div className="nav-item">
+					<div className="log navbar-nav">
 						<button
 							className="btn btn-primary nav-link dropdown-toggle"
 							type="button"
@@ -39,7 +39,7 @@ export const Navbar = () => {
 							aria-expanded="false">
 							Favorites <span className="badge badge-secondary">{store.favorites.length}</span>
 						</button>
-						<div className={store.favorites.length > 0 ? "dropdown-menu show" : "d-none"}>
+						<div className={store.favorites.length > 0 ? "al dropdown-menu show" : "d-none"}>
 							{store.favorites.map((value, index) => {
 								return (
 									<li key={index}>
@@ -51,8 +51,8 @@ export const Navbar = () => {
 						</div>
 					</div>
 					<div className="nav-item">
-						<Link to="/" className="SingOff btn btn-outline-secondary float-right" type="button">
-							Sing Off
+						<Link to="/" className="SingOff btn btn-outline-secondary" type="button">
+							Sign Off
 						</Link>
 					</div>
 				</>

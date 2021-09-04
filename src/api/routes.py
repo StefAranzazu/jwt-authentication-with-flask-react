@@ -24,7 +24,18 @@ def sign_in():
         return jsonify({"msg": "Email or password is wrong"}), 401
     
     token = create_access_token(identity=user.id)
+    print(token)
     return jsonify({"token": token}), 200
+    
+
+@api.route('/sign-up', methods = ['POST'])
+def create_user(email, password):
+    body = request.get_json()
+    if body is None:
+        return {"error": "The body is null or undefined"}, 400
+     
+    User.create_user(body['email'], body['password'])
+    return {"message": "user created"}, 200
 
 @api.route('/user', methods=['GET'])
 @jwt_required()
@@ -89,7 +100,7 @@ def create_planet():
     if body is None:
         return {"error": "The body is null or undefined"}, 400
     
-    planet = Planet.create_planet(body['name'], body['rotation_period'], body['orbital_period'], body['diameter'], body['climate'], body['terrain'], body['surface_water'], body['population']  )
+    planet = Planet.create_planet(body['name'], body['rotation_period'], body['orbital_period'], body['diameter'], body['climate'],body['gravity'], body['terrain'], body['surface_water'], body['population']  )
    
     return {"message": "planet created"}, 200
 

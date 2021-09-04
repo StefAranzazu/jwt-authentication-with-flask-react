@@ -7,12 +7,11 @@ const Register = () => {
 	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const history = useHistory();
 
 	useEffect(
 		() => {
 			if (store.isAuthenticate) {
-				history.push("/home");
+				history.push("/private");
 			}
 		},
 		[store.isAuthenticate]
@@ -43,7 +42,7 @@ const Register = () => {
 						/>
 					</div>
 					<button
-						onClick={() => actions.signIn(email, password)}
+						onClick={() => actions.sig_up(email, password)}
 						type="submit"
 						className="btn btn-primary btn-block">
 						Submit

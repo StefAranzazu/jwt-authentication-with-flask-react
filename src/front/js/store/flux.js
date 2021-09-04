@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			character: [],
 			planet: [],
 			favorites: [],
-			api: "https://3001-gray-opossum-8h58am1d.ws-eu16.gitpod.io",
+			api: "https://3001-black-snake-mq65ydzr.ws-eu16.gitpod.io",
 			isAuthenticate: false
 		},
 		actions: {
@@ -13,7 +13,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 			sign_in: (email, password) => {
 				const store = getStore();
 
-				fetch(`${store.api}api/login`, {
+				fetch(`${store.api}/api/login`, {
+					method: "POST",
+					body: JSON.stringify({
+						email: email,
+						password: password
+					}),
+					headers: {
+						"Content-type": "application/json"
+					}
+				})
+					.then(resp => {
+						if (resp.ok) {
+							return resp.json();
+						}
+					})
+					.then(data => {
+						localStorage.setItem("token", data.token);
+						setStore({ isAuthenticate: true });
+					})
+					.catch(error => console.error("[ERROR IN LOGIN]", error));
+			},
+			sign_up: (email, password) => {
+				const store = getStore();
+
+				fetch(`${store.api}/api/sign-up`, {
 					method: "POST",
 					body: JSON.stringify({
 						email: email,

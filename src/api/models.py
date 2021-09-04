@@ -22,6 +22,11 @@ class User(db.Model):
     def get_user(email, password):
         user = User.query.filter_by(email=email, password=password).first()
         return user
+    
+    def create_user(email, password):
+        user = User(email=email, password=password)
+        db.session.add(user)
+        db.session.commit()
 
 class People(db.Model):
     __tablename__= 'people'
@@ -96,8 +101,8 @@ class Planet(db.Model):
             "population": self.population,
             }
 
-    def create_planet(name, rotation_period, orbital_period, diameter, climate, terrain, surface_water, population):
-        planet = Planet(name=name, rotation_period=rotation_period, orbital_period=orbital_period, diameter=diameter, climate=climate, terrain=terrain, surface_water=surface_water, population=population)
+    def create_planet(name, rotation_period, orbital_period, diameter, climate,gravity, terrain, surface_water, population):
+        planet = Planet(name=name, rotation_period=rotation_period, orbital_period=orbital_period, diameter=diameter, climate=climate, gravity=gravity, terrain=terrain, surface_water=surface_water, population=population)
         db.session.add(planet)
         db.session.commit()
 

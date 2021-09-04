@@ -24,7 +24,7 @@ const Layout = () => {
 						<Route exact path="/sign-up">
 							<Register />
 						</Route>
-						<Route exact path="/home">
+						<Route exact path="/private">
 							<Home />
 						</Route>
 						<Route exact path="/chardetails/:thename" component={CharacterDetails} />

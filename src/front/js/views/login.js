@@ -12,42 +12,39 @@ const Login = () => {
 	useEffect(
 		() => {
 			if (store.isAuthenticate) {
-				history.push("home");
+				history.push("/private");
 			}
 		},
 		[store.isAuthenticate]
 	);
-
 	return (
 		<div className="principal-container text-center">
 			<div className="myform">
-				<form>
-					<h4>Log in</h4>
-					<div className="form-group">
-						<label>Email address</label>
-						<input
-							type="email"
-							value={email}
-							onChange={e => setEmail(e.target.value)}
-							className="form-control"
-							placeholder="Your email here!"
-						/>
-					</div>
-					<div className="form-group">
-						<label>Password</label>
-						<input
-							type="password"
-							value={password}
-							onChange={e => setPassword(e.target.value)}
-							className="form-control"
-							placeholder="Your password"
-						/>
-					</div>
-					<button onClick={() => actions.signIn(email, password)} className="btn btn-primary btn-block">
-						Submit
-					</button>
-					You are not registered? <Link to={"/sign-up"}>Sign up!</Link>{" "}
-				</form>
+				<h4>Log in</h4>
+				<div className="form-group">
+					<label>Email address</label>
+					<input
+						type="email"
+						value={email}
+						onChange={e => setEmail(e.target.value)}
+						className="form-control"
+						placeholder="Your email here!"
+					/>
+				</div>
+				<div className="form-group">
+					<label>Password</label>
+					<input
+						type="password"
+						value={password}
+						onChange={e => setPassword(e.target.value)}
+						className="form-control"
+						placeholder="Your password"
+					/>
+				</div>
+				<button onClick={() => actions.sign_in(email, password)} className="btn btn-primary btn-block">
+					Submit
+				</button>
+				You are not registered? <Link to={"/sign-up"}>Sign up!</Link>{" "}
 			</div>
 		</div>
 	);
