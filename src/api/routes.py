@@ -35,7 +35,7 @@ def create_user(email, password):
         return {"error": "The body is null or undefined"}, 400
      
     User.create_user(body['email'], body['password'])
-    return {"message": "user created"}, 200
+    return jsonify({"msg": "user created"}), 200
 
 @api.route('/user', methods=['GET'])
 @jwt_required()
